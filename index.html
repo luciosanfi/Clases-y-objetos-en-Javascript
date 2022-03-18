@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clases.css">
+    <title>clases</title>
+    <h1>Clases en javascript</h1>
+</head>
+<body>
+    <div class="class-object">
+        <p>
+            Las clases en javascript al igual que en java se declaran con la primer letra en mayusculas y en el caso de las palabras
+            compuestas utilizamos CamelCase es decir todas las palabras juntas y la primer letra de cada palabra en mayuscula. <br>
+            class NombreDeLaClase{
+            }
+            es la sintaxis basica para declarar una clase en javascript. <br>
+            ¿Que colocamos dentro de las llaves de la clase?
+            pues los metodos y propiedades propios de la clase. <br>
+            Las propiedades son las caracteristicas generales que queremos que tengan todos los objetos de nuestra clase,
+            Por ejemplo en la clase Persona sabemos que todas las personas tienen un nombre, apellido, edad y dni.
+            Los metodos son aquellas acciones que queremos que los objetos de nuestra clase realicen.
+            por ejemplo todas las personas pueden comer, respirar y pensar.
+            las propiedades las definimos dentro de la clase de la siguiente manera:
+            class Persona{
+                nombre;
+                apellido;
+                edad;
+                dni;
+            }
+            las mismas no estan inicializadas y por lo tanto si hago un console.log de la clase, me va a devolver undefined
+            en todas las propiedades. <br>
+            Tambien podemos inicializar las variables a traves del metodo constructor.
+            ¿Que es el metodo constructor? Es el primer metodo que implementamos en las clases o que podemos implementar ya que uno puede elgir si usarlo o no. <br>
+            <h2>Sintaxis:</h2>
+            class Persona{ <br>
+                nombre;<br>
+                apellido;<br>
+                edad;<br>
+                dni; <br>
+                constructor(nombre = "Lucio", apellido = "Sanfilippo", edad = 50, dni = 38700540){
+            <br>  this.nombre = nombre; <br>
+                  this.apellido = apellido; <br>
+                  this.edad = edad; <br>
+                  this.dni = dni; <br>
+            } <br>
+            Si bien no es obligatorio inicializar las propiedades con el constructor, vemos que de esa manera, 
+            podemos crear objetos de la clase con una sintaxis rapida y muy facil de entender. <br>
+            <h2>Objetos:</h2>
+            Los objetos son las instancias de una clase, si decimos que vamos a instanciar una clase quiere decir que
+            vamos a crear uno o varios objetos de dicha clase. <br>
+            Nosotros en el codigo anterior le hemos puesto valores por defecto a las propiedades de los objetos pero <br>
+            una vez que los mismos esten instanciados, ya podemos agregar los valores a las propiedades propias de <br>
+            cada objeto ya que por ejemplo no todas las personas se llaman iguales y definitivamente mas de dos personas <br>
+            no pueden tener el mismo numero de DNI. <br>
+            <h2>Sintaxis:</h2>
+            class Persona{
+                nombre = "";
+                apellido = "";
+                edad = 0;
+                dni = 0;
+                constructor(nombre = "Lucio", apellido= "Sanfilippo", edad = 50, dni = 37800540) {
+                    this.nombre = nombre;
+                    this.apellido = apellido;
+                    this.edad = edad;
+                    this.dni = dni;
+                }
+            }   
+            const persona1 = new Persona("Fernando","Godino",26,38500820); <br>
+            const persona2 = new Persona("Osvaldo","De La Canal",40,26200350); <br>
+            console.log(persona1); <br>
+            console.log(persona2); <br>
+
+        </p>
+    </div> 
+    <div class="methods"> 
+        <p>
+            <h2>Metodos</h2>
+            Los metodos son las funciones que pertenecen a los objetos de una clase y son una manera de definir
+            cuales son las acciones que podran realizar estos objetos. <br>
+            <h2>Sintaxis:</h2>
+            class Persona{
+                nombre = "";
+                apellido = "";
+                edad = 0;
+                dni = 0;
+                comida = "";
+             constructor(nombre = "Lucio", apellido= "Sanfilippo", edad = 50, dni = 37800540) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.edad = edad;
+                this.dni = dni;
+                }
+                saludar(){
+                 console.log(`Hola mi nombre es: ${this.nombre}`);
+                }
+            }
+            const persona1 = new Persona("Fernando","Godino",26,38500820);
+            const persona2 = new Persona("Osvaldo","De La Canal",40,26200350);
+            console.log(persona1);
+            console.log(persona2);
+            persona2.saludar();
+            <h2>Sets y Gets</h2>
+            De manera basica los sets y los gets funcionan en JavaScript igual que en Java,
+            un set es para asignar un valor a una propiedad(lo mismo que el constructor) y un get es
+            para retornar el valor de una propiedad (algo similar a lo que hicimos con el metodo saludar.) <br>
+            <h2>Sintaxis:</h2>
+            Supongamos que la propiedad a la cual le queremos crear un set y un get, se llama comida. <br>
+            Set comidaFavorita(comida){ <br>
+                this.comida = comida; <br>
+            }   <br>
+                aqui lo que estamos diciendo es que a la propiedad comida del objeto en cuestion le estamos
+                asignando el valor de la comida que estamos pasando como parametro. los set solo aceptan 1 parametro
+                ya que cada set corresponde exactamente a una propiedad. <br>
+                los get no aceptan ningun parametro ya que solo tienen la funcion de retornar valores ya asignados. <br>
+                get comidaFavorita(){ <br>
+                    return this.comida; <br>
+                } <br>
+            }br
+            ¿por que al set y al get le pusimos set/get comidaFavorita y no simplmente set/get comida? <br>
+            Por que en javascript no pueden tener exactamente el mismo nombre, otra convencion es agregarle un _ al set/get o a la propidad. <br>
+            Supongamos que tenemos el objeto persona1 que pertenece a la clase Persona,
+            para utlizar el set o el get tenemos que escribir por ejemplo: <br>
+            persona1.comidaaFavorita = "lasagna"; <br>
+            consol.log(comidaFavorita); <br>
+            De esta manera no hace falta aclarar que estamos usando un set o un get si no los pusimos en el nomnbre como identificadores
+            y javascript lo asume por si solo. <br>
+            class Persona{ <br>
+                nombre = ""; <br>
+                apellido = ""; <br>
+                edad = 0; <br>
+                dni = 0; <br>
+                comida = ""; <br>
+                constructor(nombre = "Lucio", apellido= "Sanfilippo", edad = 50, dni = 37800540) { <br>
+                    this.nombre = nombre; <br>
+                    this.apellido = apellido; <br>
+                    this.edad = edad; <br>
+                    this.dni = dni; <br>
+                } <br>
+                set comidaFavorita(comida){ <br>
+                    this.comida = comida; <br>
+                } <br>
+                get comidaFavorita(){ <br>
+                    return `Mi comida favorita es: ${this.comida}`; <br>
+                } <br>
+                saludar(){ <br>
+                    console.log(`Hola mi nombre es: ${this.nombre}`); <br>
+                } <br>
+            } <br>
+        </p>
+    </div> 
+    
+      
+
+   
+    <script src="clases.js"></script>
+    
+</body>
+</html>
